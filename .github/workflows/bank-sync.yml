@@ -1,0 +1,19 @@
+name: Bank integration (manual, not implemented)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Execute server-side integration hook
+        env:
+          BANK_API_CLIENT_ID: ${{ secrets.BANK_API_CLIENT_ID }}
+          BANK_API_CLIENT_SECRET: ${{ secrets.BANK_API_CLIENT_SECRET }}
+        run: node scripts/bank-sync.mjs

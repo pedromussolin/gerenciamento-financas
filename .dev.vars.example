@@ -1,0 +1,2 @@
+# No secrets required by the current Sites application.
+# Use runtime secret bindings only for future server-side integrations.
